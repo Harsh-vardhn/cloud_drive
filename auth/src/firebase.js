@@ -1,5 +1,14 @@
-import firebase from "firebase/app";
-import "firebase/auth";
+// import { initializeApp } from "firebase/app";
+// // import "firebase/auth";
+
+// version 9 changes are drastic
+// v9 compat packages are API compatible with v8 code
+
+// https://firebase.google.com/docs/web/modular-upgrade
+
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
 
 const app = firebase.initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
