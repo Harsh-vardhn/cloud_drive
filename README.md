@@ -1,6 +1,6 @@
 # firebase_auth
 
-##Note
+Note:
 This project uses firebase v8 compatible modules. v9 compat packages are API compatible with v8 code.
 See firebase documentaion [firebase compat packages](https://firebase.google.com/docs/web/modular-upgrade).
 
