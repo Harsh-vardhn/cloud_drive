@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Card, Form, Button, Alert } from "react-bootstrap";
-// import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function Signup() {
@@ -10,7 +10,7 @@ export default function Signup() {
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  //   const history = useHistory();
+  const history = useHistory();
 
   const { signup } = useAuth();
 
@@ -25,7 +25,7 @@ export default function Signup() {
       setError("");
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
-      //   history.push("/");
+      history.push("/");
     } catch {
       setError("Failed to create an account");
     }
@@ -41,24 +41,26 @@ export default function Signup() {
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
+              <Form.Label className="mb-0">Email</Form.Label>
               <Form.Control type="email" ref={emailRef} required />
             </Form.Group>
-            <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
+            <Form.Group className="mt-2" id="password">
+              <Form.Label className="mb-0">Password</Form.Label>
               <Form.Control type="password" ref={passwordRef} required />
             </Form.Group>
-            <Form.Group id="password-confirm">
-              <Form.Label>Password Confirmation</Form.Label>
+            <Form.Group className="mt-2" id="password-confirm">
+              <Form.Label className="mb-0">Password Confirmation</Form.Label>
               <Form.Control type="password" ref={passwordConfirmRef} required />
             </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit">
+            <Button disabled={loading} className="w-100 mt-2" type="submit">
               Sign Up
             </Button>
           </Form>
         </Card.Body>
       </Card>
-      <div className="w-100 text-center mt-2">Already have an account?</div>
+      <div className="w-100 text-center mt-2">
+        Already have an account?<Link to="/Login">Log In</Link>
+      </div>
     </>
   );
 }
